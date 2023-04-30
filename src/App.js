@@ -1,28 +1,26 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import About from './components/About'
-import Vans from './components/Vans'
-import './App.css'
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import Home from "./pages/Home"
+import About from "./pages/About"
 
 function App() {
     return (
-        <React.StrictMode>
-            <BrowserRouter>
+        <BrowserRouter>
+        <header>
+            <Link className="site-logo" to="/">#VanLife</Link>
             <nav>
-                <h1>#VANLIFE</h1>
-                <div>
-                    <Link to="/about">About</Link>
-                    <Link to="/vans">Vans</Link>
-                </div>
+            <Link to="/about">About</Link>
             </nav>
-            <Routes>
-                <Route path='/vans' element={<Vans />} />
-                <Route path='/about' element={<About />} />
-            </Routes>
-            </BrowserRouter>
-        </React.StrictMode>
+        </header>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+        </Routes>
+        </BrowserRouter>
     )
-}
+    }
 
-export default App
+    ReactDOM
+    .createRoot(document.getElementById('root'))
+    .render(<App />);
